@@ -41,7 +41,7 @@ class send_attendance extends Command
         //
         ini_set('memory_limit', '-1');
 
-        $not_included = ['System', 'Head Office'];
+        $not_included = ['System', 'Head Office', 'FMTCC/MRDC', 'CCC', 'WHI-Carmona'];
         info("START Get Attendance Store");
         $attendance = Attendance::orderBy('last_id','desc')->first();
 
