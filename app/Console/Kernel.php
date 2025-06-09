@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         {
             $schedule->command('command:get_attendance_hk')->everyMinute();
             // $schedule->command('command:get_attendance')->everyMinute();
-            $schedule->command('command:send_attendance')->everyMinute();
+            // $schedule->command('command:send_attendance')->everyMinute();
         }
         else{
             $schedule->command('command:get_attendance')->everyMinute();
