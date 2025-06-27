@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Vms extends Model
 {
     //
-    protected $table = 'vms';
+    // protected $table = 'vms';
 
 }
