@@ -41,22 +41,18 @@ class send_attendance extends Command
         //
         ini_set('memory_limit', '-1');
 
-        $not_included = ['System', 'Head Office', 'FMTCC/MRDC', 'CCC', 'WHI-Carmona'];
         info("START Get Attendance Store");
         $attendance = Attendance::orderBy('last_id','desc')->first();
 
         if($attendance == null)
         {
-            // $attendances = AttendanceLog::orderBy('id','asc')->where('location','!=','System')->get()->take(100);
-            $attendances = AttendanceLog::orderBy('id','asc')->whereNotIn('location',$not_included)->take(100)->get();
+            $attendances = AttendanceLog::orderBy('id','asc')->where('location','!=','System')->get()->take(100);
         }
         else
         {
-            // $attendances = AttendanceLog::where('id','>',$attendance->last_id)->where('location','!=','System')->orderBy('id','asc')->get()->take(100);
-            $attendances = AttendanceLog::where('id','>',$attendance->last_id)->whereNotIn('location',$not_included)->orderBy('id','asc')->take(100)->get();
+            $attendances = AttendanceLog::where('id','>',$attendance->last_id)->where('location','!=','System')->orderBy('id','asc')->get()->take(100);
         }
-        // info($attendances->toArray());
-        // dd($attendances);
+        
         foreach($attendances as $att)
         {
                 if($att->type == 0)
